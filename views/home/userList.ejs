@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<style>
+	ul {
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	    overflow: hidden;
+	    background-color: #333;
+	}
+
+	li {
+	    float: left;
+	}
+
+	li a, .dropbtn {
+	    display: inline-block;
+	    color: white;
+	    width: 190px;
+	    text-align: center;
+	    padding: 14px 16px;
+	    text-decoration: none;
+	}
+
+	li a:hover, .dropdown:hover .dropbtn {
+	    background-color: red;
+	}
+
+	li.dropdown {
+	    display: inline-block;
+	}
+
+	.dropdown-content {
+	    display: none;
+	    position: absolute;
+	    background-color: #f9f9f9;
+	    min-width: 160px;
+	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	    z-index: 1;
+	}
+
+	.dropdown-content a {
+	    color: black;
+	    padding: 12px 16px;
+	    text-decoration: none;
+	    display: block;
+	    text-align: left;
+	}
+
+	.dropdown-content a:hover {background-color: #f1f1f1}
+
+	.dropdown:hover .dropdown-content {
+	    display: block;
+	}
+	</style>
+
+	<style>
+				#customers {
+				    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				    border-collapse: collapse;
+				    width: 100%;
+				}
+
+				#customers td, #customers th {
+				    border: 1px solid #ddd;
+				    padding: 8px;
+				}
+
+				#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+				#customers tr:hover {background-color: #ddd;}
+
+				#customers th {
+				    padding-top: 12px;
+				    padding-bottom: 12px;
+				    text-align: left;
+				    background-color: #4CAF50;
+				    color: white;
+				}
+	</style>
+
+	<style> html, body {background-color: #b3daff; } </style>
+
+</head>
+<body>
+	<h1><center>Employee!</center></h1>
+	<ul>
+		  <li><a href="/home">Home</a></li>
+		  <!-- <li><a href="/home/productlist">Product</a></li> -->
+		  <li class="dropdown">
+		    <a href="javascript:void(0)" class="dropbtn">Product</a>
+		    <div class="dropdown-content">
+		    	<a href="/home/productlist">Product List</a>
+		    	<a href="/home/addproduct">Add New Product</a>
+		    </div>
+		  </li>
+		  <!-- <li><a href="/home/userlist">Employee</a></li> -->
+		  <li class="dropdown">
+		    <a href="javascript:void(0)" class="dropbtn">Employee</a>
+		    <div class="dropdown-content">
+		    	<a href="/home/userlist">Employee List</a>
+		    	<a href="/home/adduser">Add New Employee</a>
+		    </div>
+		  </li>
+		  <li><a href="/home/profile">Profile</a></li>
+		  <li><a href="/home/about">About</a></li>
+		  <li class="dropdown">
+		    <a href="javascript:void(0)" class="dropbtn">Admin</a>
+		    <div class="dropdown-content">
+		    	<a href="/logout">Logout</a>
+		    </div>
+		  </li>
+	</ul>
+
+</br>
+
+	
+	<table id="customers" border="1" style="text-align:center">
+		<tr>
+			<th style="text-align:center">Id</th>
+			<th style="text-align:center">Name</th>
+			<th style="text-align:center">User Name</th>
+			<th style="text-align:center">Type</th>
+			<th style="text-align:center">Address</th>
+			<th style="text-align:center">ACTION</th>
+		</tr>
+		<% for(var i = 0; i < userList.length; i++){ %>
+
+		<tr>
+			<td><%= userList[i].id %></td>
+			<td><%= userList[i].name %></td>
+			<td><%= userList[i].username %></td>
+			<td><%= userList[i].type %></td>
+			<td><%= userList[i].address %></td>
+			<td><a href="/home/edit/<%= userList[i].id %>">Edit</a> | <a href="/home/deleteuser/<%= userList[i].id %>"> Delete</a> </td>
+		</tr>
+		
+		<% } %>
+
+	</table>
+</body>
+</html>
